@@ -1,0 +1,17 @@
+---
+# These tasks install http and the php modules.
+
+- name: Install http and php etc
+  yum: name={{ item }} state=present
+  with_items:
+   - httpd
+   - php
+   - php-mysql
+   - git
+   - libsemanage-python
+   - libselinux-python
+
+
+- name: http service state
+  service: name=httpd state=started enabled=yes
+
